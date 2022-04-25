@@ -14,19 +14,29 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Link } from "react-router-dom";
-import { ROUTES } from "@src/Routes";
 import { FormattedMessage } from "react-intl";
+import { Space, Stack, Text } from "@mantine/core";
 import { LangKeys } from "@constants/lang/LangKeys";
+import { CenteredLayout } from "@templates/CenteredLayout";
+import Logo from "@assets/logo.svg";
+import { ConnectionProgress } from "@atoms/ConnectionProgress";
 
 export function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <h2>
-        <FormattedMessage id={LangKeys.AppTitle} defaultMessage="welcome" />
-      </h2>
-      <Link to={ROUTES.Page2}>Page 2</Link>
-    </div>
+    <CenteredLayout>
+      <Stack align="center" justify="center" sx={{ flex: 1 }}>
+        <Stack>
+          <img src={Logo} alt="Haveno" />
+          <Text size="lg">
+            <FormattedMessage
+              id={LangKeys.AppHeading2}
+              defaultMessage="Monero based decentralized exchange"
+            />
+          </Text>
+        </Stack>
+        <Space h="lg" />
+        <ConnectionProgress />
+      </Stack>
+    </CenteredLayout>
   );
 }

@@ -15,13 +15,15 @@
 // =============================================================================
 
 import { Box } from "@mantine/core";
-import { FormattedMessage } from "react-intl";
-import { LangKeys } from "@constants/lang/LangKeys";
+import Logo from "../../../../assets/logo.svg";
 
-export function Header() {
+export function HeaderWithLogo() {
   return (
-    <Box component="header">
-      <FormattedMessage id={LangKeys.AppTitle} defaultMessage="Header" />
+    <Box
+      component="header"
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    >
+      <img src={Logo} alt="Haveno" height={24} />
     </Box>
   );
 }

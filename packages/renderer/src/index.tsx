@@ -19,7 +19,9 @@ import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { HashRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { MantineProvider, Global } from "@mantine/core";
 import { IntlProvider } from "@atoms/IntlProvider";
+import { globalStyles, themeOverride } from "./theme";
 import { AppRoutes } from "./Routes";
 
 const queryClient = new QueryClient({
@@ -37,7 +39,10 @@ ReactDOM.render(
       <RecoilRoot>
         <IntlProvider>
           <QueryClientProvider client={queryClient}>
-            <AppRoutes />
+            <MantineProvider theme={themeOverride}>
+              <Global styles={globalStyles} />
+              <AppRoutes />
+            </MantineProvider>
           </QueryClientProvider>
         </IntlProvider>
       </RecoilRoot>

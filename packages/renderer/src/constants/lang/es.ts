@@ -18,7 +18,9 @@ import { LangKeys } from "./LangKeys";
 
 const LangPackES: { [key in LangKeys]: string } = {
   [LangKeys.AppTitle]: "Bienvenido",
-  [LangKeys.Header]: "Electron Starter",
+  [LangKeys.AppHeading2]: "Intercambio descentralizado basado en Monero",
+  [LangKeys.ConnectingToNetwork]: "Conexión a la red Monero",
+  [LangKeys.Header]: "Haveno",
 };
 
 export default LangPackES;
