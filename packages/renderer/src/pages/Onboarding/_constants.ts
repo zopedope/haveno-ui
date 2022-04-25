@@ -14,10 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-export enum LangKeys {
-  AppTitle = "app.title",
-  AppHeading2 = "app.heading2",
-  Header = "app.header",
-  ConnectingToNetwork = "app.connectingToNetwork",
-  WelcomeToHaveno = "app.welcomeToHaveno",
-}
+export const CONTENT_MAX_WIDTH = 470;

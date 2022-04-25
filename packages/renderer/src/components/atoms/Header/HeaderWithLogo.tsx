@@ -21,7 +21,8 @@ export function HeaderWithLogo() {
   return (
     <Box
       component="header"
-      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      p="sm"
+      sx={{ alignItems: "center", display: "flex", justifyContent: "center" }}
     >
       <img src={Logo} alt="Haveno" height={24} />
     </Box>

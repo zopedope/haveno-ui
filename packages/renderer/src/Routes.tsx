@@ -15,19 +15,20 @@
 // =============================================================================
 
 import { Routes, Route } from "react-router-dom";
-import { Home } from "@pages/Home";
-import { Page2 } from "@pages/Page2";
+import { Home, Welcome } from "@pages/Onboarding";
 
 export const ROUTES = {
   Home: "/",
-  Page2: "page2",
+  Welcome: "/onboarding/welcome",
+  RestoreBackup: "/onboarding/restore-backup",
+  SetupAccount: "onboarding/setup",
 };
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path={ROUTES.Home} element={<Home />} />
-      <Route path={ROUTES.Page2} element={<Page2 />} />
+      <Route path={ROUTES.Welcome} element={<Welcome />} />
     </Routes>
   );
 }

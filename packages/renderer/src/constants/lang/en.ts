@@ -21,6 +21,8 @@ const LangPackEN: { [key in LangKeys]: string } = {
   [LangKeys.AppHeading2]: "Monero based decentralized exchange",
   [LangKeys.ConnectingToNetwork]: "Connecting to Monero Network",
   [LangKeys.Header]: "Haveno",
+  [LangKeys.WelcomeToHaveno]:
+    "Welcome to Haveno. The world’s first Monero based decentralised exchange.",
 };
 
 export default LangPackEN;
