@@ -15,7 +15,7 @@
 // =============================================================================
 
 import { Box } from "@mantine/core";
-import Logo from "../../../../assets/logo.svg";
+import Logo from "@assets/logo.svg";
 
 export function HeaderWithLogo() {
   return (

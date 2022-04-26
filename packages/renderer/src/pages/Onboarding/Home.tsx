@@ -20,20 +20,13 @@ import { LangKeys } from "@constants/lang/LangKeys";
 import { CenteredLayout } from "@templates/CenteredLayout";
 import Logo from "@assets/logo.svg";
 import { ConnectionProgress } from "@atoms/ConnectionProgress";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "@src/Routes";
 
 export function Home() {
-  const navigate = useNavigate();
   return (
     <CenteredLayout>
       <Stack align="center" justify="center" sx={{ flex: 1 }}>
         <Stack>
-          <img
-            src={Logo}
-            alt="Haveno"
-            onClick={() => navigate(ROUTES.Welcome)}
-          />
+          <img src={Logo} alt="Haveno" />
           <Text size="lg">
             <FormattedMessage
               id={LangKeys.AppHeading2}

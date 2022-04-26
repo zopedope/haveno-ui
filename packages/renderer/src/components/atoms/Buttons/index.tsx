@@ -26,15 +26,16 @@ type ButtonProps<TComponent> = MButtonProps<TComponent> & {
 
 export function Button<TComponent = "button">(props: ButtonProps<TComponent>) {
   const { children, className, flavor = "primary", ...rest } = props;
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <MButton
-      className={`${className ?? ""} ${classes.common} ${
-        flavor === "neutral" ? classes.neutral : ""
-      } ${flavor === "success" ? classes.success : ""} ${
-        flavor === "error" ? classes.error : ""
-      }`}
+      className={cx(
+        classes.common,
+        { [classes.neutral]: flavor === "neutral" },
+        { [classes.success]: flavor === "success" },
+        { [classes.error]: flavor === "error" }
+      )}
       {...rest}
     >
       {children}

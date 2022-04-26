@@ -14,7 +14,7 @@
 //  limitations under the License.
 // =============================================================================
 
-import InterFont from "../../assets/fonts/Inter-Variable.ttf";
+import InterFont from "@assets/fonts/Inter-Variable.ttf";
 
 export const globalStyles = {
   "@font-face": {

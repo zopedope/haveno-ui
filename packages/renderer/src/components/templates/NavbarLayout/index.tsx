@@ -14,24 +14,23 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Routes, Route } from "react-router-dom";
-import { Home, Welcome } from "@pages/Onboarding";
-import { Wallet } from "@pages/Wallet";
+import { FC } from "react";
+import { Box, Container, Grid, Group, Stack } from "@mantine/core";
+import { HeaderWithLogo } from "@atoms/Header";
+import { Sidebar } from "@molecules/Sidebar";
 
-export const ROUTES = {
-  Home: "/",
-  Welcome: "/onboarding/welcome",
-  RestoreBackup: "/onboarding/restore-backup",
-  SetupAccount: "/onboarding/setup",
-  Wallet: "/wallet",
-};
+interface NavbarLayoutProps {}
 
-export function AppRoutes() {
+export const NavbarLayout: FC<NavbarLayoutProps> = (props) => {
+  const { children } = props;
   return (
-    <Routes>
-      <Route path={ROUTES.Home} element={<Home />} />
-      <Route path={ROUTES.Welcome} element={<Welcome />} />
-      <Route path={ROUTES.Wallet} element={<Wallet />} />
-    </Routes>
+    <Group>
+      <Stack sx={{ width: 210 }}>
+        <Sidebar />
+      </Stack>
+      <Container p="sm" sx={{ display: "flex", flex: 1 }}>
+        {children}
+      </Container>
+    </Group>
   );
-}
+};
