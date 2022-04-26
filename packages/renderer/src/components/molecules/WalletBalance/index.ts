@@ -14,40 +14,4 @@
 //  limitations under the License.
 // =============================================================================
 
-import { FC } from "react";
-import {
-  Box,
-  Container,
-  createStyles,
-  Grid,
-  Group,
-  Stack,
-} from "@mantine/core";
-import { Sidebar } from "@molecules/Sidebar";
-
-interface NavbarLayoutProps {}
-
-export const NavbarLayout: FC<NavbarLayoutProps> = (props) => {
-  const { children } = props;
-  const { classes } = useStyles();
-  return (
-    <Group className={classes.container} spacing={0}>
-      <Sidebar />
-      <Box className={classes.contentArea}>{children}</Box>
-    </Group>
-  );
-};
-// fcfcfc
-
-const useStyles = createStyles((theme) => ({
-  container: {
-    flex: 1,
-    alignItems: "stretch",
-  },
-  contentArea: {
-    background: theme.colors.gray[0],
-    display: "flex",
-    flex: 1,
-    padding: theme.spacing.sm,
-  },
-}));
+export * from "./WalletBalance";

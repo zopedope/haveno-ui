@@ -14,40 +14,33 @@
 //  limitations under the License.
 // =============================================================================
 
-import { FC } from "react";
-import {
-  Box,
-  Container,
-  createStyles,
-  Grid,
-  Group,
-  Stack,
-} from "@mantine/core";
-import { Sidebar } from "@molecules/Sidebar";
+import { ReactComponent as MarketsIcon } from "@assets/markets.svg";
+import { ReactComponent as OffersIcon } from "@assets/offers.svg";
+import { ReactComponent as TradesIcon } from "@assets/trades.svg";
+import { ReactComponent as NotificationsIcon } from "@assets/notifications.svg";
+import { ReactComponent as AccountIcon } from "@assets/account.svg";
 
-interface NavbarLayoutProps {}
+export const WIDTH = 210;
 
-export const NavbarLayout: FC<NavbarLayoutProps> = (props) => {
-  const { children } = props;
-  const { classes } = useStyles();
-  return (
-    <Group className={classes.container} spacing={0}>
-      <Sidebar />
-      <Box className={classes.contentArea}>{children}</Box>
-    </Group>
-  );
-};
-// fcfcfc
-
-const useStyles = createStyles((theme) => ({
-  container: {
-    flex: 1,
-    alignItems: "stretch",
+export const NAV_LINKS = [
+  {
+    icon: <MarketsIcon />,
+    label: "Markets",
   },
-  contentArea: {
-    background: theme.colors.gray[0],
-    display: "flex",
-    flex: 1,
-    padding: theme.spacing.sm,
+  {
+    icon: <OffersIcon />,
+    label: "My Offers",
   },
-}));
+  {
+    icon: <TradesIcon />,
+    label: "My Trades",
+  },
+  {
+    icon: <NotificationsIcon />,
+    label: "Notifications",
+  },
+  {
+    icon: <AccountIcon />,
+    label: "Account",
+  },
+];
