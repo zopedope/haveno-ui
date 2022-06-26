@@ -14,102 +14,74 @@
 //  limitations under the License.
 // =============================================================================
 
-import { useState } from "react";
-import {
-  Box,
-  Collapse,
-  createStyles,
-  Group,
-  Stack,
-  Text,
-  UnstyledButton,
-} from "@mantine/core";
-import { ReactComponent as XMRLogo } from "@assets/xmr-logo-1.svg";
-import { ReactComponent as ArrowDown } from "@assets/arrow-down.svg";
+import { createStyles, Group, Skeleton, Stack, Text } from "@mantine/core";
+import { useBalances } from "@hooks/haveno/useBalances";
+import { Currency } from "@atoms/Currency";
 
 export function WalletBalance() {
-  const [isOpen, setOpen] = useState(false);
-  const { classes } = useStyles({ isOpen });
+  const { classes } = useStyles();
+  const { data: balances, isLoading: isLoadingBalance } = useBalances();
+
   return (
-    <Box className={classes.container}>
-      <Stack>
-        <Group spacing="sm">
-          <XMRLogo />
-          <Text className={classes.heading} weight={700}>
-            Available Balance
-          </Text>
-        </Group>
-        <Stack spacing={4}>
-          <UnstyledButton
-            className={classes.btnToggle}
-            onClick={() => setOpen(!isOpen)}
-          >
-            <Group>
-              <Text className={classes.xmr}>10.647382650365</Text>
-              <ArrowDown />
-            </Group>
-          </UnstyledButton>
-          <Text className={classes.fiat}>(EUR 2441,02)</Text>
-        </Stack>
-        <Collapse in={isOpen}>
-          <Stack>
-            <Stack spacing={4}>
-              <Text className={classes.balanceLabel}>Total</Text>
-              <Text className={classes.balanceValue}>14.048212174412</Text>
-            </Stack>
-            <Stack spacing={4}>
-              <Text className={classes.balanceLabel}>Reserved</Text>
-              <Text className={classes.balanceValue}>2.874598526325</Text>
-            </Stack>
-            <Stack spacing={4}>
-              <Text className={classes.balanceLabel}>Locked</Text>
-              <Text className={classes.balanceValue}>0.854975624859</Text>
-            </Stack>
-          </Stack>
-        </Collapse>
+    <Group className={classes.container} spacing="sm" position="apart">
+      <Stack spacing={2}>
+        <Text className={classes.heading}>Available Balance</Text>
+        <BalanceValue
+          isLoading={isLoadingBalance}
+          value={balances?.availableBalance || 0}
+        />
       </Stack>
-    </Box>
+      <Stack spacing={2}>
+        <Text className={classes.heading}>Locked Funds</Text>
+        <BalanceValue
+          isLoading={isLoadingBalance}
+          value={balances?.lockedBalance || 0}
+        />
+      </Stack>
+      <Stack spacing={2}>
+        <Text className={classes.heading}>Reserved Funds</Text>
+        <BalanceValue
+          isLoading={isLoadingBalance}
+          value={balances?.reservedBalance || 0}
+        />
+      </Stack>
+    </Group>
   );
 }
 
-const useStyles = createStyles<string, { isOpen: boolean }>(
-  (theme, params) => ({
-    container: {
-      border: `solid 1px ${theme.colors.gray[4]}`,
-      borderRadius: theme.radius.md,
-      padding: theme.spacing.md,
-    },
-    heading: {
-      fontSize: "0.5rem",
-      fontWeight: 700,
-      textTransform: "uppercase",
-    },
-    btnToggle: {
-      svg: {
-        transform: `rotate(${params.isOpen ? 180 : 0}deg)`,
-        transition: "transform 0.2s",
-        width: 8,
-      },
-    },
-    xmr: {
-      fontSize: "0.75rem",
-      fontWeight: 600,
-    },
-    fiat: {
-      color: theme.colors.gray[6],
-      fontSize: "0.625rem",
-      fontWeight: 500,
-    },
-    balanceLabel: {
-      color: theme.colors.gray[6],
-      fontSize: "0.625rem",
-      fontWeight: 700,
-      textTransform: "uppercase",
-    },
-    balanceValue: {
-      color: theme.colors.gray[8],
-      fontSize: "0.625rem",
-      fontWeight: 600,
-    },
-  })
-);
+interface BalanceValueProps {
+  isLoading: boolean;
+  value: number;
+}
+
+function BalanceValue({ isLoading, value }: BalanceValueProps) {
+  const { classes } = useStyles();
+  if (isLoading) {
+    return <Skeleton height={12} my={3} sx={{ opacity: 0.15 }} />;
+  }
+  return (
+    <Text className={classes.balanceValue}>
+      <Currency value={value} />
+    </Text>
+  );
+}
+
+const useStyles = createStyles((theme) => ({
+  container: {
+    background: "rgba(17, 17, 17, 0.15)",
+    borderRadius: theme.radius.md,
+    padding: `${theme.spacing.xs * 0.8}px ${theme.spacing.xs}px`,
+  },
+  heading: {
+    color: theme.colors.white,
+    fontSize: "0.5rem",
+    fontWeight: 700,
+    opacity: 0.8,
+    textTransform: "uppercase",
+  },
+  balanceValue: {
+    color: theme.colors.white,
+    fontSize: "0.75rem",
+    fontWeight: 600,
+  },
+}));

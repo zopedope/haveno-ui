@@ -16,8 +16,9 @@
 
 import { app } from "electron";
 import "./security-restrictions";
+import { registerHavenoHandlers } from "./services/haveno";
 import { restoreOrCreateWindow } from "@src/mainWindow";
-import { registerStoreHandlers } from "./services/store";
+import { registerStoreHandlers } from "@src/services/store";
 
 /**
  * Prevent multiple instances
@@ -60,6 +61,11 @@ app
   .whenReady()
   .then(registerStoreHandlers)
   .catch((e) => console.error("Failed to register store handlers:", e));
+
+app
+  .whenReady()
+  .then(registerHavenoHandlers)
+  .catch((e) => console.error("Failed to register haveno handlers:", e));
 
 /**
  * Install devtools in development mode only

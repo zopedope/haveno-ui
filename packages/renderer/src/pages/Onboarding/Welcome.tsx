@@ -14,12 +14,14 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack, Space, Text, Title, Container, Group } from "@mantine/core";
-import { FormattedMessage } from "react-intl";
-import { LangKeys } from "@constants/lang/LangKeys";
-import { CenteredLayout } from "@src/components/templates/CenteredLayout";
-import { Button } from "@atoms/Buttons";
+import { Stack, Space, Container, Group } from "@mantine/core";
+import { Link } from "react-router-dom";
 import { CONTENT_MAX_WIDTH } from "./_constants";
+import { LangKeys } from "@constants/lang/LangKeys";
+import { CenteredLayout } from "@templates/CenteredLayout";
+import { Button } from "@atoms/Buttons";
+import { BodyText, Heading } from "@atoms/Typography";
+import { ROUTES } from "@constants/routes";
 
 export function Welcome() {
   return (
@@ -27,23 +29,25 @@ export function Welcome() {
       <Stack align="center" justify="center" sx={{ flex: 1 }}>
         <Stack>
           <Container size={CONTENT_MAX_WIDTH}>
-            <Title order={1}>
-              <FormattedMessage
-                id={LangKeys.WelcomeToHaveno}
-                defaultMessage="Welcome to Haveno. The world’s first Monero based decentralised exchange."
-              />
-            </Title>
+            <Heading order={1} stringId={LangKeys.WelcomeToHaveno}>
+              Welcome to Haveno. The world&apos;s first Monero based
+              decentralised exchange.
+            </Heading>
           </Container>
           <Container size={CONTENT_MAX_WIDTH}>
-            <Text size="md">
-              Before you can use Haveno, we’re going to set up your account.{" "}
-            </Text>
+            <BodyText size="lg">
+              Before you can use Haveno, we&apos;re going to set up your account
+            </BodyText>
           </Container>
         </Stack>
         <Space h="lg" />
         <Group position="left" sx={{ width: CONTENT_MAX_WIDTH }}>
-          <Button>Setup Account</Button>
-          <Button flavor="neutral">Upload Backup</Button>
+          <Button component={Link} to={ROUTES.CreateAccount}>
+            Setup Account
+          </Button>
+          <Button flavor="neutral" component={Link} to={ROUTES.RestoreBackup}>
+            Upload Backup
+          </Button>
         </Group>
       </Stack>
     </CenteredLayout>

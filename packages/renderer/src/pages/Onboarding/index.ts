@@ -14,5 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-export * from "./Home";
+export * from "./ConnectingMonero";
+export * from "./CreateAccount";
 export * from "./Welcome";

@@ -15,25 +15,33 @@
 // =============================================================================
 
 import type { FC } from "react";
-import { Box, createStyles, Group } from "@mantine/core";
-import { Sidebar } from "@molecules/Sidebar";
+import type { DefaultProps } from "@mantine/core";
+import { Box, createStyles, Stack } from "@mantine/core";
+import { Navbar } from "@organisms/Navbar";
 
-export const NavbarLayout: FC = (props) => {
-  const { children } = props;
-  const { classes } = useStyles();
+export const NavbarLayout: FC<DefaultProps> = ({
+  children,
+  classNames,
+  className,
+  ...rest
+}) => {
+  const { classes, cx } = useStyles(undefined, {
+    name: "NavbarLayout",
+    classNames,
+  });
+
   return (
-    <Group className={classes.container} spacing={0}>
-      <Sidebar />
+    <Stack className={cx(classes.container, className)} spacing={0} {...rest}>
+      <Navbar />
       <Box className={classes.contentArea}>{children}</Box>
-    </Group>
+    </Stack>
   );
 };
-// fcfcfc
 
 const useStyles = createStyles((theme) => ({
   container: {
-    flex: 1,
     alignItems: "stretch",
+    flex: 1,
   },
   contentArea: {
     background: theme.colors.gray[0],

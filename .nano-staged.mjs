@@ -17,8 +17,8 @@
 import { resolve, sep } from "path";
 
 export default {
-  // eslint
-  "*.{js,ts,tsx}": "eslint --cache --fix",
+  // format
+  "*.{js,ts,tsx}": ["yarn format", "yarn license", "eslint --cache --fix"],
 
   /**
    * Run typechecking if any type-sensitive files was staged

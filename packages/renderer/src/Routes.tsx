@@ -15,23 +15,102 @@
 // =============================================================================
 
 import { Routes, Route } from "react-router-dom";
-import { Home, Welcome } from "@pages/Onboarding";
-import { Wallet } from "@pages/Wallet";
-
-export const ROUTES = {
-  Home: "/",
-  Welcome: "/onboarding/welcome",
-  RestoreBackup: "/onboarding/restore-backup",
-  SetupAccount: "/onboarding/setup",
-  Wallet: "/wallet",
-};
+import { ROUTES } from "@constants/routes";
+import { ProtectedRoute } from "@atoms/ProtectedRoute";
+import { Home } from "@pages/Home";
+import { Login } from "@pages/Login";
+import { CreateAccount, Welcome } from "@pages/Onboarding";
+import {
+  AccountBackup,
+  Settings,
+  PaymentAccounts,
+  Security,
+  Wallet,
+  AddPaymentAccount,
+  PaymentMethods,
+} from "@pages/Account";
+import { MyWallet } from "@pages/MyWallet";
+import { MarketsOffersPage } from "@pages/Markets";
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path={ROUTES.Home} element={<Home />} />
+      <Route path={ROUTES.Login} element={<Login />} />
       <Route path={ROUTES.Welcome} element={<Welcome />} />
-      <Route path={ROUTES.Wallet} element={<Wallet />} />
+      <Route path={ROUTES.CreateAccount} element={<CreateAccount />} />
+      <Route
+        path={ROUTES.Markets}
+        element={
+          <ProtectedRoute>
+            <MarketsOffersPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.MyWallet}
+        element={
+          <ProtectedRoute>
+            <MyWallet />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.PaymentAccounts}
+        element={
+          <ProtectedRoute>
+            <PaymentAccounts />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.NodeSettings}
+        element={
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.Backup}
+        element={
+          <ProtectedRoute>
+            <AccountBackup />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.Wallet}
+        element={
+          <ProtectedRoute>
+            <Wallet />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.Security}
+        element={
+          <ProtectedRoute>
+            <Security />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.PaymentAccounts}
+        element={
+          <ProtectedRoute>
+            <PaymentMethods />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={ROUTES.AddPaymentAccount}
+        element={
+          <ProtectedRoute>
+            <AddPaymentAccount />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }

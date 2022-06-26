@@ -1,0 +1,123 @@
+// Vitest Snapshot v1
+
+exports[`pages::Login > renders without exploding 1`] = `
+<DocumentFragment>
+  <div
+    class="mantine-Stack-root mantine-14yk9bp"
+  >
+    <header
+      class="mantine-caub1y"
+    >
+      <img
+        alt="Haveno"
+        height="24"
+        src="/assets/logo.svg"
+      />
+    </header>
+    <div
+      class="mantine-Container-root mantine-13ldvuy"
+    >
+      <div
+        class="mantine-Stack-root mantine-12lpdrc"
+      >
+        <form>
+          <div
+            class="mantine-Stack-root mantine-lfk3cq"
+          >
+            <div
+              class="mantine-Container-root mantine-15pjuqq"
+            >
+              <h1
+                class="mantine-Title-root mantine-10yhpe6"
+              >
+                Login to Haveno
+              </h1>
+            </div>
+            <div
+              class="mantine-Text-root mantine-1xgwjc0"
+            >
+              All your data is stored locally on your machine. Haveno uses solely a password.
+            </div>
+            <div
+              class="mantine-63n06h"
+            />
+            <div
+              class="mantine-PasswordInput-root mantine-1u48g6v"
+            >
+              <label
+                class="mantine-PasswordInput-label mantine-1bjo575"
+                for="password"
+                id="password-label"
+              >
+                Password
+              </label>
+              <div
+                class="mantine-PasswordInput-wrapper mantine-12sbrde"
+              >
+                <div
+                  aria-invalid="false"
+                  class="mantine-PasswordInput-defaultVariant mantine-PasswordInput-input mantine-PasswordInput-input mantine-1hlli39"
+                >
+                  <input
+                    aria-label="Password"
+                    class="mantine-PasswordInput-innerInput mantine-66fxec"
+                    id="password"
+                    type="password"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="mantine-o3oqoy mantine-PasswordInput-rightSection"
+                >
+                  <button
+                    aria-hidden="true"
+                    class="mantine-ActionIcon-hover mantine-ActionIcon-root mantine-PasswordInput-visibilityToggle mantine-11pctd2"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <svg
+                      fill="none"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      width="15"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z"
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mantine-63n06h"
+            />
+            <div
+              class="mantine-Group-root mantine-19jxmdp"
+            >
+              <button
+                class="mantine-Button-filled mantine-Button-root mantine-Group-child mantine-18llzhv"
+                type="submit"
+              >
+                <div
+                  class="mantine-3xbgk5 mantine-Button-inner"
+                >
+                  <span
+                    class="mantine-qo1k2 mantine-Button-label"
+                  >
+                    Login
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -14,18 +14,64 @@
 //  limitations under the License.
 // =============================================================================
 
-import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
-import { AppProviders } from "@atoms/AppProviders";
+import { beforeAll, describe, expect, it, vi } from "vitest";
+import { render, waitForElementToBeRemoved } from "@testing-library/react";
 import { WalletBalance } from ".";
+import { AppProviders } from "@atoms/AppProviders";
 
 describe("molecules::WalletBalance", () => {
-  it("renders without exploding", () => {
-    const { asFragment } = render(
+  beforeAll(() => {
+    vi.mock("@hooks/haveno/useBalances", () => ({
+      useBalances: () => ({
+        isLoading: false,
+        isSuccess: true,
+        data: {
+          lockedBalance: 12,
+          reservedTradeBalance: 14,
+          balance: 15,
+        },
+      }),
+    }));
+
+    vi.mock("@hooks/storage/useAccountInfo", () => ({
+      useAccountInfo: () => ({
+        isLoading: false,
+        isSuccess: true,
+        data: {
+          primaryFiat: "USD",
+        },
+      }),
+    }));
+
+    vi.mock("@hooks/haveno/usePrice", () => ({
+      usePrice: () => ({
+        isLoading: false,
+        isSuccess: true,
+        data: 300,
+      }),
+    }));
+  });
+
+  it("renders loading state", () => {
+    const { asFragment, unmount } = render(
       <AppProviders>
         <WalletBalance />
       </AppProviders>
     );
     expect(asFragment()).toMatchSnapshot();
+    unmount();
+  });
+
+  it("renders after loading data", async () => {
+    const { asFragment, queryByText, unmount } = render(
+      <AppProviders>
+        <WalletBalance />
+      </AppProviders>
+    );
+    if (queryByText("Loading...")) {
+      await waitForElementToBeRemoved(() => queryByText("Loading..."));
+    }
+    expect(asFragment()).toMatchSnapshot();
+    unmount();
   });
 });

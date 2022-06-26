@@ -14,7 +14,6 @@
 //  limitations under the License.
 // =============================================================================
 
-import { Stack } from "@mantine/core";
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Welcome } from ".";
 
@@ -24,11 +23,7 @@ export default {
 } as ComponentMeta<typeof Welcome>;
 
 const Template: ComponentStory<typeof Welcome> = () => {
-  return (
-    <Stack>
-      <Welcome />
-    </Stack>
-  );
+  return <Welcome />;
 };
 
 export const Default = Template.bind({});

@@ -14,18 +14,27 @@
 //  limitations under the License.
 // =============================================================================
 
-import type { FC } from "react";
 import { RecoilRoot } from "recoil";
+import { HashRouter } from "react-router-dom";
+import { NotificationsProvider } from "@mantine/notifications";
+import type { FC } from "react";
 import { QueryClientProvider } from "./QueryClientProvider";
 import { IntlProvider } from "./IntlProvider";
 import { ThemeProvider } from "./ThemeProvider";
+import { ModalsProvider } from "@atoms/Modal";
 
 export const AppProviders: FC = ({ children }) => (
-  <RecoilRoot>
-    <IntlProvider>
-      <QueryClientProvider>
-        <ThemeProvider>{children}</ThemeProvider>
-      </QueryClientProvider>
-    </IntlProvider>
-  </RecoilRoot>
+  <HashRouter>
+    <RecoilRoot>
+      <IntlProvider>
+        <QueryClientProvider>
+          <ThemeProvider>
+            <ModalsProvider>
+              <NotificationsProvider>{children}</NotificationsProvider>
+            </ModalsProvider>
+          </ThemeProvider>
+        </QueryClientProvider>
+      </IntlProvider>
+    </RecoilRoot>
+  </HashRouter>
 );
